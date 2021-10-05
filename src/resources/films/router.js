@@ -45,4 +45,19 @@ router.get("/director/:director", (req, res) => {
   res.json(filteredFilms);
 });
 
+router.post("/", (req, res) => {
+  const filmToCreate = {
+    ...req.body,
+  };
+
+  filmToCreate.id = films.length + 1;
+
+  // const updatedFilms = [...films, filmToCreate];
+
+  films.push(filmToCreate);
+  console.log({ films });
+
+  res.json({ film: filmToCreate });
+});
+
 module.exports = router;
