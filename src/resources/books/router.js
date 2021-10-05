@@ -49,4 +49,15 @@ router.get("/type/:type", (req, res) => {
   res.json(filteredBooks);
 });
 
+router.post("/", (req, res) => {
+  const bookToCreate = {
+    ...req.body,
+  };
+
+  bookToCreate.id = books.length + 1;
+
+  books.push(bookToCreate);
+  res.json({ book: bookToCreate });
+});
+
 module.exports = router;
