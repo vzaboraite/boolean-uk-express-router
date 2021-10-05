@@ -37,4 +37,12 @@ router.get("/:id", (req, res) => {
   res.json(foundFilm);
 });
 
+router.get("/director/:director", (req, res) => {
+  const { director } = req.params;
+
+  const filteredFilms = films.filter((film) => film.director === director);
+
+  res.json(filteredFilms);
+});
+
 module.exports = router;
