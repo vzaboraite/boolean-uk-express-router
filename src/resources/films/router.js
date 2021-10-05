@@ -29,4 +29,12 @@ router.get("/", (req, res) => {
   res.json({ films });
 });
 
+router.get("/:id", (req, res) => {
+  const { id } = req.params; // id returned as string
+
+  const foundFilm = films.find((film) => film.id === parseInt(id));
+
+  res.json(foundFilm);
+});
+
 module.exports = router;
