@@ -25,4 +25,8 @@ const films = [
   },
 ];
 
+router.get("/", (req, res) => {
+  res.json({ films });
+});
+
 module.exports = router;
