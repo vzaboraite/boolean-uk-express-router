@@ -40,7 +40,11 @@ router.get("/:id", (req, res) => {
 router.get("/director/:director", (req, res) => {
   const { director } = req.params;
 
-  const filteredFilms = films.filter((film) => film.director === director);
+  const filteredFilms = films.filter((film) => {
+    const directorForUrl = film.director.toLowerCase().split(" ").join("-");
+
+    return directorForUrl === director;
+  });
 
   res.json(filteredFilms);
 });
@@ -51,8 +55,6 @@ router.post("/", (req, res) => {
   };
 
   filmToCreate.id = films.length + 1;
-
-  // const updatedFilms = [...films, filmToCreate];
 
   films.push(filmToCreate);
   console.log({ films });
