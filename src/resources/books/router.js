@@ -41,4 +41,12 @@ router.get("/:id", (req, res) => {
   res.json(foundBook);
 });
 
+router.get("/type/:type", (req, res) => {
+  const { type } = req.params;
+
+  const filteredBooks = books.filter((book) => book.type === type);
+
+  res.json(filteredBooks);
+});
+
 module.exports = router;
