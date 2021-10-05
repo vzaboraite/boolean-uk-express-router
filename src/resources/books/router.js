@@ -33,4 +33,12 @@ router.get("/", (req, res) => {
   res.json(books);
 });
 
+router.get("/:id", (req, res) => {
+  const { id } = req.params;
+
+  const foundBook = books.find((book) => book.id === parseInt(id));
+
+  res.json(foundBook);
+});
+
 module.exports = router;
